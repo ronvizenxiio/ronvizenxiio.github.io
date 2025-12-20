@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuis Matematika Ron Warwick</title>
     <style>
-        /* --- 1. Gaya Dasar dan Latar Belakang (Dark Theme) --- */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #003300; /* HIJAU TUA KEHITAM-HITAMAN */
+            background-color: #003300;
             color: #ffffff;
             display: flex;
             flex-direction: column;
@@ -20,7 +19,6 @@
             position: relative;
         }
 
-        /* Latar Belakang */
         body::before {
             content: '';
             position: absolute;
@@ -36,7 +34,6 @@
             pointer-events: none;
         }
         
-        /* --- 2. Gaya Konten Utama (Responsif Core) --- */
         .container {
             width: 95%; 
             max-width: 750px; 
@@ -64,7 +61,6 @@
             font-weight: bold;
         }
 
-        /* --- 3. Gaya Aksesoris Matematika (Desktop Only) --- */
         .accessory {
             position: absolute;
             font-size: 50px;
@@ -87,7 +83,6 @@
         #acc-5 { bottom: 5%; right: -70px; font-size: 80px; color: #388E3C; transform: rotate(-30deg); }
 
 
-        /* --- 4. Halaman Menu Kategori --- */
         #category-menu {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -120,7 +115,6 @@
             opacity: 0.9;
         }
 
-        /* --- Lanjutan Gaya Kuis --- */
         .quiz-container { display: none; } 
 
         .header-info {
@@ -134,7 +128,6 @@
             font-weight: bold;
         }
         
-        /* NEW: Display current level */
         #current-level-display {
             font-weight: bold;
             color: #ccff00;
@@ -173,7 +166,6 @@
 
         #feedback { margin: 20px 0; font-size: 1.3em; font-weight: bold; min-height: 30px; }
 
-        /* Tombol */
         #next-button, #restart-button, #back-to-menu {
             background-color: #ccff00;
             color: #003300;
@@ -189,11 +181,9 @@
 
         #next-button:hover, #restart-button:hover, #back-to-menu:hover { background-color: #aae600; }
 
-        /* Gaya untuk feedback */
         .correct { color: #ccff00; }
         .wrong { color: #ff6347; }
 
-        /* --- Gaya Halaman Skor --- */
         #score-summary {
             background-color: #006400;
             padding: 40px;
@@ -215,7 +205,6 @@
             margin: 20px 0;
         }
         
-        /* --- Gaya Footer --- */
         .app-footer {
             margin-top: 20px; 
             width: 100%;
@@ -233,9 +222,6 @@
 
         .app-footer a:hover { text-decoration: underline; }
 
-        /* ================================================= */
-        /* === MEDIA QUERY UNTUK RESPONSIF PADA PERANGKAT KECIL === */
-        /* ================================================= */
 
         @media (max-width: 650px) {
             
@@ -267,7 +253,6 @@
                 font-size: 1.1em;
             }
         }
-        /* Akhir Media Query */
     </style>
 </head>
 <body>
