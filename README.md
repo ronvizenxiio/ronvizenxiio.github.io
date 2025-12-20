@@ -2,7 +2,7 @@
 
 <img src="https://github.com/ronvizenxiio.png" width="120" style="border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);">
 
-Roni S.
+Roni S. |
 Digital Artwork  
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/ronvizenxiio)
