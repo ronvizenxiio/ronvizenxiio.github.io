@@ -1,628 +1,106 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuis Matematika Ron Warwick</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #003300;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px 0;
-            position: relative;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roni S. | Digital Kreatif </title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body {
+            background: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.2); 
-            background-image: radial-gradient(#38761d 5%, transparent 5%), radial-gradient(#006400 5%, transparent 5%);
-            background-size: 50px 50px;
-            opacity: 0.2;
-            z-index: 0;
-            pointer-events: none;
-        }
+        .container { max-width: 650px; width: 100%; }
+
+        header { text-align: center; margin-bottom: 40px; }
+        .profile-img {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            border: 3px solid #38bdf8;
+            margin-bottom: 15px;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+            object-fit: cover;
+        }
+        h1 { font-size: 2.2rem; color: #38bdf8; margin-bottom: 5px; }
+        .tagline { color: #94a3b8; font-size: 1.1rem; font-style: italic; }
+
+        .section {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            margin-bottom: 30px;
+        }
+        h2 { font-size: 1.3rem; color: #38bdf8; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .about-text { color: #cbd5e1; margin-bottom: 5px; }
+        .about-text strong { color: #38bdf8; }
         
-        .container {
-            width: 95%; 
-            max-width: 750px; 
-            text-align: center;
-            position: relative; 
-            z-index: 10;
-            margin: auto;
-            background-color: #004d00;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
-        }
+        .section-title { font-size: 1.2rem; color: #38bdf8; margin: 25px 0 15px 5px; display: block; }
+        
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
 
-        h1 {
-            color: #ffffff; 
-            font-size: 2.5em;
-            margin-bottom: 5px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            background: #24334d;
+        }
 
-        h2 {
-            color: #ffeb3b; 
-            font-size: 1.8em;
-            margin-bottom: 30px;
-            font-weight: bold;
-        }
+        .card-info h3 { font-size: 1.1rem; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .card-info p { font-size: 0.85rem; color: #94a3b8; }
+        .btn-link { color: #38bdf8; font-weight: bold; font-size: 0.9rem; }
 
-        .accessory {
-            position: absolute;
-            font-size: 50px;
-            opacity: 0.8;
-            z-index: 5;
-            pointer-events: none;
-            font-weight: bold;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-            transition: all 0.5s; 
-        }
-
-        #acc-1 { top: 5%; left: -100px; font-size: 80px; color: #ffeb3b; transform: rotate(-15deg); }
-        #acc-2 { top: 40%; left: -60px; font-size: 70px; color: #4CAF50; transform: rotate(10deg); }
-        #acc-3 {
-            bottom: 5%; left: -50px; font-size: 40px; color: #2196F3;
-            border: 3px solid #2196F3; padding: 5px 10px; border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        #acc-4 { top: 10%; right: -100px; font-size: 60px; color: #ffffff; opacity: 0.9; transform: rotate(20deg); }
-        #acc-5 { bottom: 5%; right: -70px; font-size: 80px; color: #388E3C; transform: rotate(-30deg); }
-
-
-        #category-menu {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .category-card {
-            background-color: #38761d;
-            color: #ffffff;
-            padding: 20px;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            font-weight: bold;
-        }
-
-        .category-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); }
-
-        .category-card h3 {
-            font-size: 2.5em;
-            margin: 0 0 10px 0;
-            color: #ccff00;
-        }
-
-        .category-card p {
-            font-size: 1.1em;
-            margin: 0;
-            color: #ffffff;
-            opacity: 0.9;
-        }
-
-        .quiz-container { display: none; } 
-
-        .header-info {
-            display: flex;
-            justify-content: space-between;
-            background-color: #000000;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        
-        #current-level-display {
-            font-weight: bold;
-            color: #ccff00;
-        }
-
-        .question-box, .answer-box {
-            background-color: #006400;
-            padding: 30px 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            color: white;
-        }
-
-        .question-text { margin-bottom: 15px; font-size: 1.2em; }
-
-        #math-question {
-            font-size: 4em;
-            font-weight: 900;
-            color: #ffffff;
-            margin: 0;
-        }
-        
-        #user-answer {
-            width: 90%; 
-            max-width: 250px; 
-            padding: 12px 15px;
-            font-size: 1.6em;
-            text-align: center;
-            border: 2px solid #a3e6a3; 
-            border-radius: 8px;
-            background-color: #f0fff0;
-            color: #003300;
-            margin-top: 10px;
-        }
-
-        #feedback { margin: 20px 0; font-size: 1.3em; font-weight: bold; min-height: 30px; }
-
-        #next-button, #restart-button, #back-to-menu {
-            background-color: #ccff00;
-            color: #003300;
-            border: none;
-            padding: 10px 35px;
-            font-size: 1.2em;
-            cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            margin-top: 10px;
-        }
-
-        #next-button:hover, #restart-button:hover, #back-to-menu:hover { background-color: #aae600; }
-
-        .correct { color: #ccff00; }
-        .wrong { color: #ff6347; }
-
-        #score-summary {
-            background-color: #006400;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            display: none; 
-            color: white;
-        }
-        
-        #level-status-message {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #ccff00;
-        }
-
-        #final-score {
-            font-size: 4em;
-            color: #ccff00;
-            margin: 20px 0;
-        }
-        
-        .app-footer {
-            margin-top: 20px; 
-            width: 100%;
-            text-align: center;
-            z-index: 10;
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        .app-footer a {
-            color: #ccff00;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .app-footer a:hover { text-decoration: underline; }
-
-
-        @media (max-width: 650px) {
-            
-             #acc-1, #acc-2, #acc-3, #acc-4, #acc-5 {
-                display: none; 
-            }
-            
-            .container {
-                padding: 15px;
-                width: 98%;
-            }
-
-            h1 { font-size: 1.8em; }
-            h2 { font-size: 1.4em; }
-
-            #category-menu {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .category-card h3 { font-size: 2em; }
-            
-            #math-question { font-size: 3em; }
-
-            #user-answer { font-size: 1.4em; max-width: 100%; }
-
-            #next-button, #restart-button, #back-to-menu {
-                padding: 10px 20px;
-                font-size: 1.1em;
-            }
-        }
-    </style>
+        footer { text-align: center; margin-top: 50px; font-size: 0.8rem; color: #64748b; border-top: 1px solid #1e293b; padding-top: 20px; }
+    </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Kuis Matematika Ron Warwick</h1>
-    
-    <div id="acc-1" class="accessory">⚡️</div> 
-    <div id="acc-2" class="accessory">%</div> 
-    <div id="acc-3" class="accessory">A+B</div> 
-    <div id="acc-4" class="accessory">📝</div> 
-    <div id="acc-5" class="accessory">✖️</div> 
+    <div class="container">
+        <header>
+            <img src="https://github.com/ronvizenxiio.png" alt="Roni S." class="profile-img">
+            <h1>Roni S.</h1>
+            <p class="tagline">Digital kreatif</p>
+        </header>
 
-    <div id="category-menu-section">
-        <h2>Pilih Jenis Kuis</h2>
-        <div id="category-menu">
-            <div class="category-card" data-op="addition">
-                <h3>A + B = ?</h3>
-                <p>Penjumlahan</p>
-            </div>
-            <div class="category-card" data-op="subtraction">
-                <h3>A - B = ?</h3>
-                <p>Pengurangan</p>
-            </div>
-            <div class="category-card" data-op="multiplication">
-                <h3>A × B = ?</h3>
-                <p>Perkalian</p>
-            </div>
-            <div class="category-card" data-op="division">
-                <h3>A ÷ B = ?</h3>
-                <p>Pembagian</p>
-            </div>
-            <div class="category-card" data-op="mixed">
-                <h3>A ± B × C ÷ D = ?</h3>
-                <p>Campuran (Tantangan)</p>
-            </div>
-        </div>
-    </div>
+        <div class="section">
+            <h2>🏠 Tentang Saya </h2>
+            <p class="about-text">
+                Hallo There! Saya <strong>Roni Samudra</strong> (dikenal sebagai <strong>ronvizenxiio</strong> di media sosial). 
+                Saya adalah seorang <strong>Mahasiswa Sistem Informasi</strong> yang memiliki ketertarikan besar pada eksplorasi Teknologi, Data dan Karya Seni. 
+                Ready to job as <Strong>UI/UX Desainer</Strong> - <Strong>Desain Grafis</Strong> - <Strong>Logo Desainer</Strong> - <Strong>Database Administrator</Strong> - <Strong>Management & Content Srategist</Strong> - <Strong>Admin</Strong> - <Strong>Data Analyst</Strong> - <Strong>Writters.</Strong>
+            </p>
+        </div>
 
-    <div id="quiz-section" class="quiz-container">
-        
-        <div class="header-info">
-            <span>Level: <span id="current-level-display">1</span></span>
-            <span>Benar: <span id="current-score-display">0</span></span>
-            <span>Soal: <span id="question-index-display">1</span>/<span id="questions-total">5</span></span>
-        </div>
+        <span class="section-title">📂 Digital Kreatif Projects</span>
+        <a href="https://ronvizenxiio.github.io/Logic-System/" class="card">
+            <div class="card-info">
+                <h3>Media Refleksi Pelajar</h3>
+                <p>Bedah kembali pengetahuan anda dengan kuis logika dan media pembelajaran interaktif.</p>
+            </div>
+            <div class="btn-link">Lihat &rarr;</div>
+        </a>
 
-        <div>
-            <div class="question-box">
-                <div class="question-text">Berapakah Hasil Dari:</div>
-                <div id="math-question">...</div>
-            </div>
-
-            <div class="answer-box">
-                <div class="answer-label">Jawaban Anda:</div>
-                <input type="number" id="user-answer" placeholder="Masukkan Jawaban" required>
-                
-                <div id="feedback"></div>
-                <button id="next-button">Jawab</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="score-summary">
-        <h2>Level Selesai!</h2>
-        <p id="level-status-message"></p>
-        <p>Akurasi Anda:</p>
-        <div id="final-score"></div>
-        <p>Anda menjawab <span id="correct-count">0</span> dari <span id="questions-total-summary">5</span> soal dengan benar.</p>
-        <button id="restart-button">Coba Lagi Level Ini</button>
-        <button id="back-to-menu">Kembali ke Menu Utama</button>
-    </div>
-</div>
-
-<footer class="app-footer">
-    <p>
-        📸 Instagram: <a href="https://instagram.com/ronvizenxiio_" target="_blank">ronvizenxiio_</a> | 
-        📧 Kontak: <a href="mailto:roni199107@gmail.com">roni199107@gmail.com</a>
-    </p>
-</footer>
-
-<script>
-    // Global State
-    let currentScore = 0;
-    let currentQuestionIndex = 0; // 0 sampai (totalSoal - 1)
-    let selectedOperation = 'mixed';
-
-    // Menyimpan Level untuk setiap kategori, default Level 1
-    let categoryLevels = {
-        'addition': 1,
-        'subtraction': 1,
-        'multiplication': 1,
-        'division': 1,
-        'mixed': 1,
-    };
-
-    // Elemen DOM
-    const questionEl = document.getElementById('math-question');
-    const answerInput = document.getElementById('user-answer');
-    const feedbackEl = document.getElementById('feedback');
-    const nextButton = document.getElementById('next-button');
-    const scoreDisplayEl = document.getElementById('current-score-display');
-    const indexDisplayEl = document.getElementById('question-index-display');
-    const totalQuestionsEl = document.getElementById('questions-total');
-    const currentLevelEl = document.getElementById('current-level-display');
-    const finalScoreEl = document.getElementById('final-score');
-    const scoreSummaryEl = document.getElementById('score-summary');
-    const restartButton = document.getElementById('restart-button');
-    const correctCountEl = document.getElementById('correct-count'); 
-    const totalQuestionsSummaryEl = document.getElementById('questions-total-summary');
-    const backToMenuButton = document.getElementById('back-to-menu');
-    const categoryMenuSection = document.getElementById('category-menu-section');
-    const quizSection = document.getElementById('quiz-section');
-    const categoryCards = document.querySelectorAll('.category-card');
-    const levelStatusMessageEl = document.getElementById('level-status-message');
-
-
-    // --- FUNGSI SUARA (TEXT-TO-SPEECH) ---
-    function speak(text) {
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'id-ID'; 
-            
-            const voices = window.speechSynthesis.getVoices();
-            const indonesianVoice = voices.find(voice => voice.lang === 'id-ID');
-            if (indonesianVoice) {
-                utterance.voice = indonesianVoice;
-            }
-
-            window.speechSynthesis.speak(utterance);
-        }
-    }
-
-    // --- FUNGSI GENERATOR SOAL DENGAN SKALA KESULITAN & LEVEL ---
-    function generateQuestion(operation, difficultyIndex) {
-        // difficultyIndex: 0 hingga 4 (progres dalam 5 soal)
-        const currentLevel = categoryLevels[operation];
-        const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-        
-        let baseMaxVal;
-        
-        // 1. Tentukan kesulitan dasar berdasarkan progres 5 soal (difficultyIndex 0-4)
-        if (difficultyIndex === 0) baseMaxVal = 10;
-        else if (difficultyIndex === 1) baseMaxVal = 20;
-        else if (difficultyIndex === 2) baseMaxVal = 40;
-        else if (difficultyIndex === 3) baseMaxVal = 60;
-        else baseMaxVal = 100;
-
-        // 2. Skalakan kesulitan berdasarkan Level (currentLevel)
-        // Level 1: maxVal = baseMaxVal * 1
-        // Level 2: maxVal = baseMaxVal * 2
-        // Level 3: maxVal = baseMaxVal * 3, dst.
-        let maxVal = Math.floor(baseMaxVal * currentLevel);
-        if (maxVal < 10) maxVal = 10; // Mencegah nilai minimum terlalu rendah
-
-        let numA = randomInt(1, maxVal);
-        let numB = randomInt(1, maxVal);
-        let questionString;
-        let correctAnswer;
-
-        switch (operation) {
-            case 'addition':
-                questionString = `${numA} + ${numB}`;
-                correctAnswer = numA + numB;
-                break;
-            case 'subtraction':
-                const subA = Math.max(numA, numB);
-                const subB = Math.min(numA, numB);
-                questionString = `${subA} - ${subB}`;
-                correctAnswer = subA - subB;
-                break;
-            case 'multiplication':
-                // Jaga salah satu faktor di bawah 20 agar tidak terlalu gila di level awal
-                const maxMultFactor = (currentLevel > 1) ? 20 : 15;
-                const multA = randomInt(1, maxMultFactor);
-                const multB = randomInt(1, Math.min(30, maxVal));
-                
-                questionString = `${multA} × ${multB}`;
-                correctAnswer = multA * multB;
-                break;
-            case 'division':
-                // Pembagian: Pastikan hasilnya bilangan bulat
-                const result = randomInt(2, Math.min(20, maxVal));
-                const divisor = randomInt(2, Math.min(15, maxVal)); 
-                const dividend = result * divisor;
-
-                questionString = `${dividend} ÷ ${divisor}`;
-                correctAnswer = result;
-                break;
-            case 'mixed':
-            default:
-                // Soal mixed dibuat lebih kompleks di Level > 1
-                if (currentLevel === 1) {
-                    // Penjumlahan/Pengurangan sederhana 3 angka (Maks 150)
-                    const numC = randomInt(1, 30);
-                    let resultOp = numA + numB - numC;
-                    
-                    if (resultOp <= 0) return generateQuestion(operation, difficultyIndex); 
-                    questionString = `${numA} + ${numB} - ${numC}`;
-                    correctAnswer = resultOp;
-
-                } else {
-                    // Operasi Campuran (Perkalian/Pembagian + Penjumlahan/Pengurangan)
-                    const factorA = randomInt(2, 10 + currentLevel * 2);
-                    const factorB = randomInt(2, 10 + currentLevel * 2);
-                    const factorC = randomInt(1, 50 * currentLevel);
-                    
-                    if (Math.random() > 0.5) {
-                        // A * B + C
-                        questionString = `${factorA} × ${factorB} + ${factorC}`;
-                        correctAnswer = (factorA * factorB) + factorC;
-                    } else {
-                        // A - (B * C) - pastikan hasilnya positif
-                        const prod = factorB * factorC;
-                        if (factorA < prod) {
-                            // C * B - A
-                            questionString = `${prod} - ${factorA}`;
-                            correctAnswer = prod - factorA;
-                        } else {
-                            // A - B * C
-                             questionString = `${factorA} - ${factorB} × ${factorC}`;
-                            correctAnswer = factorA - (factorB * factorC);
-                        }
-                    }
-                }
-                break;
-        }
-
-        if (Number.isInteger(correctAnswer) && correctAnswer >= 0) {
-            return { question: questionString, answer: correctAnswer };
-        } else {
-            // Rekursi jika hasil negatif/tidak valid
-            return generateQuestion(operation, difficultyIndex);
-        }
-    }
-
-    // --- FUNGSI ALUR PERMAINAN ---
-    function loadNewQuestion() {
-        const questionsTotal = categoryLevels[selectedOperation] * 5;
-
-        if (currentQuestionIndex >= questionsTotal) {
-            showScoreScreen();
-            return;
-        }
-
-        // Difficulty Index dihitung berdasarkan urutan soal dalam blok 5
-        const difficultyIndex = currentQuestionIndex % 5; 
-        
-        currentQuestion = generateQuestion(selectedOperation, difficultyIndex); 
-        
-        questionEl.textContent = currentQuestion.question;
-        answerInput.value = ''; 
-        feedbackEl.textContent = ''; 
-        feedbackEl.className = '';
-        nextButton.textContent = 'Jawab';
-        isAnswered = false;
-        answerInput.disabled = false; 
-        
-        currentLevelEl.textContent = categoryLevels[selectedOperation];
-        totalQuestionsEl.textContent = questionsTotal;
-        indexDisplayEl.textContent = currentQuestionIndex + 1; 
-
-        answerInput.focus();
-    }
-
-    function checkAnswer() {
-        if (isAnswered) return;
-
-        const userAnswer = parseInt(answerInput.value);
-        
-        if (isNaN(userAnswer)) {
-            feedbackEl.textContent = 'Mohon masukkan angka.';
-            feedbackEl.className = 'wrong';
-            return;
-        }
-
-        if (userAnswer === currentQuestion.answer) {
-            feedbackEl.textContent = '🎉 Jawaban Anda Benar!';
-            feedbackEl.className = 'correct';
-            speak('Benar'); 
-            currentScore++;
-        } else {
-            feedbackEl.textContent = `❌ Maaf Jawaban Anda Salah. Jawaban yang benar adalah ${currentQuestion.answer}.`;
-            feedbackEl.className = 'wrong';
-            speak('Salah'); 
-        }
-
-        isAnswered = true;
-        nextButton.textContent = 'Selanjutnya';
-        answerInput.disabled = true; 
-        scoreDisplayEl.textContent = currentScore;
-        
-        currentQuestionIndex++;
-    }
-
-    function showScoreScreen() {
-        quizSection.style.display = 'none';
-        
-        const questionsTotal = categoryLevels[selectedOperation] * 5;
-        const percentage = Math.round((currentScore / questionsTotal) * 100);
-        const requiredScore = Math.ceil(questionsTotal * 0.7); // Target 70% Benar
-
-        finalScoreEl.textContent = `${percentage}%`;
-        correctCountEl.textContent = currentScore;
-        totalQuestionsSummaryEl.textContent = questionsTotal;
-        scoreSummaryEl.style.display = 'block';
-
-        if (currentScore >= requiredScore) {
-            // Lolos! Naik Level
-            categoryLevels[selectedOperation]++;
-            levelStatusMessageEl.textContent = `SELAMAT! Anda Lolos ke Level ${categoryLevels[selectedOperation]}!`;
-            restartButton.textContent = 'Mulai Level Berikutnya';
-        } else {
-            // Gagal. Ulangi Level.
-            const currentLevel = categoryLevels[selectedOperation];
-            levelStatusMessageEl.textContent = `Anda Belum Lolos Level ${currentLevel}. (Target Benar: ${requiredScore} soal).`;
-            restartButton.textContent = 'Coba Lagi Level Ini';
-        }
-    }
-
-    function initializeGame() {
-        currentScore = 0;
-        currentQuestionIndex = 0;
-        isAnswered = false;
-
-        categoryMenuSection.style.display = 'none';
-        scoreSummaryEl.style.display = 'none';
-        quizSection.style.display = 'block'; 
-        
-        loadNewQuestion();
-        scoreDisplayEl.textContent = currentScore;
-    }
-
-    function showMenu() {
-        currentQuestionIndex = 0;
-        categoryMenuSection.style.display = 'grid';
-        quizSection.style.display = 'none';
-        scoreSummaryEl.style.display = 'none';
-    }
-
-    function handleNextAction() {
-        if (isAnswered) {
-            loadNewQuestion();
-        } else {
-            checkAnswer();
-        }
-    }
-    
-    // --- EVENT LISTENERS ---
-    nextButton.addEventListener('click', handleNextAction);
-    restartButton.addEventListener('click', initializeGame); // Tombol restart selalu memanggil initializeGame
-    backToMenuButton.addEventListener('click', showMenu);
-    
-    answerInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            handleNextAction();
-        }
-    });
-
-    categoryCards.forEach(card => {
-        card.addEventListener('click', function() {
-            selectedOperation = this.getAttribute('data-op');
-            initializeGame();
-        });
-    });
-
-    // Inisialisasi awal
-    window.onload = showMenu;
-</script>
+        <footer>
+            &copy; 2025 Roni S. Portfolio | Digital Kreatif
+        </footer>
+    </div>
 
 </body>
 </html>
